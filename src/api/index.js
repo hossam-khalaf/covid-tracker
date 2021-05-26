@@ -16,7 +16,7 @@ export const fetchData = async () => {
 			TotalConfirmed,
 			TotalRecovered,
 			TotalDeaths,
-			Date,
+			lastUpdate: Date,
 		}
 	} catch (error) {
 		return error
