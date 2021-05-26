@@ -1,23 +1,24 @@
 import axios from 'axios'
 
 // Api url !!!
-const url = 'https://covid19.mathdro.id/api'
+const url = 'https://api.covid19api.com/summary'
 
 // using axios to fetch the response asynchronously
 export const fetchData = async () => {
 	try {
 		// destructure data
+		const response = await axios.get(url)
 		const {
-			data: { confirmed, recoverd, deaths, lastUpdate },
-		} = await axios.get(url)
+			Global: { TotalConfirmed, TotalRecovered, TotalDeaths, Date },
+		} = response.data
 
 		return {
-			confirmed,
-			recoverd,
-			deaths,
-			lastUpdate,
+			TotalConfirmed,
+			TotalRecovered,
+			TotalDeaths,
+			Date,
 		}
 	} catch (error) {
-		console.log(error)
+		return error
 	}
 }
